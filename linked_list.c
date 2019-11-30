@@ -103,3 +103,43 @@ int delete_from_list(linked_list *ll, int index){
 		return i;
 	}
 }
+
+
+
+//additional---------------------------------------------------//
+int linkedlist_status(linked_list *ll)
+{
+	int i=0;
+	struct linked_list* temp = ll;
+	if(ll==NULL) return -1;
+	else{
+		while(temp!=NULL){
+			i++;
+			temp=temp->next;
+		}
+		return i;
+	}
+}
+
+int swap_items(linked_list *f, linked_list *s)
+{
+	struct linked_list* temp;
+	if((f==NULL)||(s==NULL)) return -1;
+	else{
+		temp = f->next;
+		f->next = s->next;
+		s->next = temp;
+		return 0;
+	}
+}
+
+int empty_list(linked_list *ll)
+{
+	if(ll==NULL) return -1;
+	int count=linkedlist_status(ll);
+	for(int i=0; i<count; i++)
+	{
+		delete_from_list(ll, i);
+	}
+	return count;
+}
